@@ -1,0 +1,26 @@
+<div *ngIf="loading">
+  <app-loading></app-loading>
+</div>
+<div *ngIf="!loading">
+  <div class="question-card p-4 m-2" *ngFor="let question of questions">
+    <h5 class="question">{{ question.question }}</h5>
+    <div class="mb-2">
+      <div class="option d-flex ">
+        <label for="optionA" class="me-2">(A) {{ question.optionA }}</label>
+        <label for="optionB">(B) {{ question.optionB }}</label>
+      </div>
+      <div class="option d-flex">
+        <label for="optionC" class="me-2">(C) {{ question.optionC }}</label>
+        <label for="optionD">(D) {{ question.optionD }}</label>
+      </div>
+    </div>
+    <div class="d-flex">
+      <p class="answer me-2">Answer: {{ question.answer }}</p>
+      <p class="hardness fw-4">Hardness: {{ question.hardness }}</p>
+    </div>
+    <div class="d-flex">
+      <button class="bg-transparent btn me-2" (click)="onedit(question)"><i class="fa-regular fa-pen-to-square fa-2x edit-color"></i></button>
+      <button class="bg-transparent btn" (click)="ondelete(question)"><i class="fa-solid fa-trash text-danger fa-2x"></i></button>
+    </div>
+  </div>
+</div>

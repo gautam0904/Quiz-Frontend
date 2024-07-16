@@ -1,0 +1,25 @@
+<div *ngIf="loading">
+    <app-loading></app-loading>
+</div>
+<div *ngIf="!loading">
+    <h1 class="text-light">User List</h1>
+
+<div class="users d-flex flex-wrap gap-3 ">
+    <div class="card post p-3 m-2" *ngFor="let user of users">
+        <img [src]="user.profilePicture" alt="Profile Picture" class="profile-picture">
+
+        <div class="user-details">
+            <h2>{{ user.name }}</h2>
+            <p>{{ user.email }}</p>
+        </div>
+
+        <div class="d-flex">
+            <button class="bg-transparent btn me-2" [routerLink]="['/auth/signup']" [queryParams]="{isedit : true , data : user}"><i class="fa-solid fa-user-pen edit-color fa-2x"></i></button>
+            <button class="bg-transparent btn" (click)="ondelete(user)"><i class="fa-solid fa-trash text-danger fa-2x"></i></button>
+        </div>
+
+
+    </div>
+
+</div>
+</div>

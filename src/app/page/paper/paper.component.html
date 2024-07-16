@@ -1,0 +1,40 @@
+<div *ngIf="paper">
+    <form [formGroup]="paperform" (ngSubmit)="onSubmit()">
+        <div *ngFor="let que of paper; let index = index">
+            <div class="question-card post p-2 text-dark">
+                <div class="fw-5">
+                    Question {{index+1}}
+                </div>
+                <div class="fs-3">
+                    {{ que.question }}
+                </div>
+                <div class="row">
+                    <div class="title fs-3 fw-5 col-lg-6">
+                        <input type="radio" formControlName="answer{{index}}" value="{{ que.optionA }}">
+                        {{ que.optionA }}
+                    </div>
+                    <div class="title fs-4 fw-5 col-lg-6">
+                        <input type="radio" formControlName="answer{{index}}" value="{{que.optionB }}">
+                        {{ que.optionB }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="title fs-4 fw-5 col-lg-6">
+                        <input type="radio" formControlName="answer{{index}}" value=" {{ que.optionC }}">
+                        {{ que.optionC}}
+                    </div>
+                    <div class="title fs-4 fw-5 col-lg-6">
+                        <input type="radio" formControlName="answer{{index}}" value=" {{ que.optionD }}">
+                        {{ que.optionD }}
+                    </div>
+                </div>
+               
+                <div class="text-danger"
+                *ngIf="paperform.controls['answer' + index]?.invalid && paperform.controls['answer' + index]?.touched">
+                Please select an answer.
+            </div>
+            </div>
+        </div>
+        <button class="btn btn-primary mx-auto mt-3" type="submit">Submit</button>
+    </form>
+</div>

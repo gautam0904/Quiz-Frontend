@@ -1,0 +1,34 @@
+.profile-picture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-details {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.card {
+    background-color : transparent
+}
+
+.users{
+    background-color: #F3EAE1;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.post {
+    width: 30.95%;
+    height: 300;
+    padding: 2%;
+}
+
+
+@media (max-width: 768px) {
+    .post{
+        width: 100%;
+    }
+}

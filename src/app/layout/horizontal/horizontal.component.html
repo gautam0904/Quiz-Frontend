@@ -1,0 +1,13 @@
+<div class="app-container">
+    <div>
+        <app-navbar></app-navbar>
+    </div>
+    <div class="d-flex">
+        <div [ngClass]="{'col-lg-2 sidebar':sidebarVisible , 'd-none':!sidebarVisible}">
+            <app-sidebar></app-sidebar>
+        </div>
+        <div [ngClass]="{'content container-fluid col-lg-10':sidebarVisible , 'content container-fluid col-lg-12':!sidebarVisible}">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
