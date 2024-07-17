@@ -1,15 +1,15 @@
-
-
 <div class="container- content">
     <div class="row px-auto">
-        <div class="col-lg-6">
-            <button type="button" class="btn btn-primary" routerLink="/page/paper">
+        <div class="col-lg-6 division">
+            <button type="button" class="btn btn-primary" routerLink="/page/paper" *ngIf="user.role !== 'admin'">
                 Starts new
             </button>
 
         </div>
         <div class="col-lg-6">
-            dilod status
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Levels
+              </button>
         </div>
     </div>
     <div class="row">
@@ -21,3 +21,34 @@
         </div>
     </div>
 </div>
+
+<!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Levels</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="level-icons">
+                <div *ngFor="let level of levels">
+                <div class="level-icon" [ariaDisabled]="level > user.level">
+                  <div [ngClass]="{'passed-icon-container' : level <= user.level  , 'icon-container' : level > user.level}">
+                    <span [ngClass]="{'passed-level-number' : level <= user.level  , 'level-number' : level > user.level}">{{ level }}</span>
+                  </div>
+                </div>
+            </div>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  

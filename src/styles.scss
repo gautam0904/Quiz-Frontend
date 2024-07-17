@@ -22,7 +22,7 @@ form {
 
 form * {
   font-family: 'Poppins', sans-serif;
-  color: #ffffff;
+  color: #ffffff !important;
   letter-spacing: 0.5px;
   outline: none;
   border: none;
@@ -35,9 +35,20 @@ form h3 {
   text-align: center;
 }
 
+input {
+  display: block;
+  height: 50px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.07) !important;
+  border-radius: 3px;
+  padding: 0 10px;
+  margin-top: 8px !important;
+  font-size: 14px;
+  font-weight: 300;
+}
 
 ::placeholder {
-  color: #e5e5e5;
+  color: #e5e5e5 !important;
 }
 
 .button-primary {

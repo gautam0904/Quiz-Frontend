@@ -8,6 +8,7 @@ import { SharedService } from 'src/app/core/services/shared.service';
 })
 export class HorizontalComponent {
   sidebarVisible: boolean = false;
+
   
   constructor(private sharedService: SharedService) { }
 

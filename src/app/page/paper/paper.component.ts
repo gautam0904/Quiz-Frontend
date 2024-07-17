@@ -17,12 +17,10 @@ export class PaperComponent {
 
   onSubmit() {
     if (this.paperform.valid) {
-      console.log(this.paperform.value);
       
-      this.paperservice.getResult().subscribe({
-        next: async (resultData: any) => {
-          
-          this.router.navigate(['/page/user']);
+      this.paperservice.getResult(this.paperform.value).subscribe({
+        next: async (resultData: any) => {          
+          this.router.navigate(['/']);
         },
         error: (res) => {
           Swal.fire({
@@ -54,6 +52,7 @@ export class PaperComponent {
           title: 'Oops...',
           text: res.error.message,
         });
+        this.router.navigate(['/']);
       }
     });
   }

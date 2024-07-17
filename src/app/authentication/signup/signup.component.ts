@@ -15,9 +15,10 @@ export class SignupComponent implements OnInit {
   isedit: boolean = false
   profile: Iuser | undefined = undefined
   signupForm!: FormGroup;
-  selectedFile!: File;
+  selectedFile : File | undefined = undefined;
   selectedRole!: string;
   loading: boolean = false;
+
 
   constructor(private fb: FormBuilder,
     private userService: UserService,
@@ -61,7 +62,6 @@ export class SignupComponent implements OnInit {
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
-
     const file = event.target.files && event.target.files[0];
     if (file) {
       const reader = new FileReader();
@@ -80,40 +80,42 @@ export class SignupComponent implements OnInit {
 
   onupdate() {
     this.loading = true;
-    this.userService.update(this.signupForm.value, this.selectedFile).subscribe({
-      next: (resdata: any) => {
-        Swal.fire({
-          icon: "success",
-          title: "Oops...",
-          text: resdata.message,
-        });
-        const localUser = JSON.parse(localStorage.getItem('user') as string)
-        if (localUser == this.profile) {
-          const token = localStorage.getItem('token') as string;
-          localStorage.clear();
-          localStorage.setItem('token', token);
-          localStorage.setItem('user', JSON.stringify(resdata));
+    if (this.selectedFile) {
+      this.userService.update(this.signupForm.value, this.selectedFile).subscribe({
+        next: (resdata: any) => {
+          Swal.fire({
+            icon: "success",
+            title: "Oops...",
+            text: resdata.message,
+          });
+          const localUser = JSON.parse(localStorage.getItem('user') as string)
+          if (localUser == this.profile) {
+            const token = localStorage.getItem('token') as string;
+            localStorage.clear();
+            localStorage.setItem('token', token);
+            localStorage.setItem('user', JSON.stringify(resdata));
+          }
+          this.signupForm.reset(); 
+          this.isedit=false
+          this.loading = false;
+          this.router.navigate(['/page'])
+        },
+        error: (res: any) => {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: res.error.message,
+          });
+          this.loading = false;
         }
-        this.signupForm.reset(); 
-        this.isedit=false
-        this.loading = false;
-        this.router.navigate(['/page'])
-      },
-      error: (res: any) => {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: res.error.message,
-        });
-        this.loading = false;
-      }
-
-    })
+  
+      }) 
+    }
   }
 
   onSubmit() {
     this.loading = true;
-    if (this.signupForm.valid) {
+    if (this.signupForm.valid && this.selectedFile) {
       this.userService.signup(this.signupForm.value, this.selectedFile).subscribe({
         next: (resdata: any) => {
           Swal.fire({

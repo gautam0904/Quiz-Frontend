@@ -1,29 +1,29 @@
 <div *ngIf="paper">
     <form [formGroup]="paperform" (ngSubmit)="onSubmit()">
         <div *ngFor="let que of paper; let index = index">
-            <div class="question-card post p-2 text-dark">
-                <div class="fw-5">
+            <div class="question-card p-2">
+                <div class="fw-5 text-dark">
                     Question {{index+1}}
                 </div>
-                <div class="fs-3">
+                <div class="fs-3 text-dark">
                     {{ que.question }}
                 </div>
                 <div class="row">
-                    <div class="title fs-3 fw-5 col-lg-6">
+                    <div class="title fs-3 fw-5 col-lg-6 text-dark">
                         <input type="radio" formControlName="answer{{index}}" value="{{ que.optionA }}">
                         {{ que.optionA }}
                     </div>
-                    <div class="title fs-4 fw-5 col-lg-6">
+                    <div class="title fs-4 fw-5 col-lg-6 text-dark">
                         <input type="radio" formControlName="answer{{index}}" value="{{que.optionB }}">
                         {{ que.optionB }}
                     </div>
                 </div>
                 <div class="row">
-                    <div class="title fs-4 fw-5 col-lg-6">
+                    <div class="title fs-4 fw-5 col-lg-6 text-dark">
                         <input type="radio" formControlName="answer{{index}}" value=" {{ que.optionC }}">
                         {{ que.optionC}}
                     </div>
-                    <div class="title fs-4 fw-5 col-lg-6">
+                    <div class="title fs-4 fw-5 col-lg-6 text-dark">
                         <input type="radio" formControlName="answer{{index}}" value=" {{ que.optionD }}">
                         {{ que.optionD }}
                     </div>
