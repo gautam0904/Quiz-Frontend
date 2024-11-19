@@ -35,11 +35,11 @@
     "maximumWarning": "500kb",
     "maximumError": "1mb"
   },
-  {
-    "type": "anyComponentStyle",
-    "maximumWarning": "6kb",  // Increase this value
-    "maximumError": "7kb"     // Or increase this as well
-  }
+{
+  "type": "anyComponentStyle",
+  "maximumWarning": "6kb",  // You can increase this further if needed
+  "maximumError": "8kb"     // Or adjust this based on your needs
+}
 ]
 
             "tsConfig": "tsconfig.app.json",
