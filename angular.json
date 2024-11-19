@@ -23,6 +23,15 @@
             "polyfills": [
               "zone.js"
             ],
+            "budgets": [
+  {
+    "type": "bundle",
+    "name": "styles",
+    "maximumWarning": "6mb",
+    "maximumError": "7mb"
+  }
+]
+
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
